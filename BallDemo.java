@@ -23,6 +23,7 @@ public class BallDemo
 
     /**
      * Simulate two bouncing balls
+     * @param numeroPelotas, es el número de pelotas que se crearán
      */
     public void bounce(int numeroPelotas)
     {
@@ -64,5 +65,19 @@ public class BallDemo
                 }
             }
         }
+    }
+    
+    /**
+     * Este método dibuja un rectágulo, sobre esté las bolas chocarán
+     * @param numeroPelotas, es el número de pelotas que se crearán
+     */
+    public void boxBounce(int numeroPelotas){
+        //creo rectangulo
+        myCanvas.drawLine(50, 40, 550, 40);
+        myCanvas.drawLine(50, 450, 550, 450);
+        myCanvas.drawLine(50, 450, 50, 40);
+        myCanvas.drawLine(550, 450, 550, 40);
+        myCanvas.setVisible(true);
+        
     }
 }

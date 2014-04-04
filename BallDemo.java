@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class BallDemo   
 {
     private Canvas myCanvas;
-    ArrayList<BouncingBall> arrayPelotas;
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -20,7 +19,6 @@ public class BallDemo
     public BallDemo()
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
-        arrayPelotas = new ArrayList<>();
     }
 
     /**
@@ -29,7 +27,7 @@ public class BallDemo
     public void bounce(int numeroPelotas)
     {
         int ground = 400;   // position of the ground line, lanza desde arriba a 400 de los 500
-        
+        ArrayList<BouncingBall> arrayPelotas = new ArrayList<>();;
         myCanvas.setVisible(true);
 
         // draw the ground, la línea del suelo desde el 50 hasta el 550 de 600
@@ -39,7 +37,7 @@ public class BallDemo
        
             Random aleatorio = new Random();
         for(int i = 0; i < numeroPelotas; i++){    
-            int radio = 1 + (int)(Math.random()*(100-20+1));
+            int radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20
             int y = aleatorio.nextInt(350);
             int x = aleatorio.nextInt(300);
             int colorRed = aleatorio.nextInt(256);

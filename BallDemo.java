@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.Random;
+import java.util.ArrayList;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -11,6 +12,7 @@ import java.util.Random;
 public class BallDemo   
 {
     private Canvas myCanvas;
+    ArrayList<BouncingBall> arrayPelotas = new ArrayList<>();
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -23,7 +25,7 @@ public class BallDemo
     /**
      * Simulate two bouncing balls
      */
-    public void bounce()
+    public void bounce(int numeroPelotas)
     {
         int ground = 400;   // position of the ground line, lanza desde arriba a 400 de los 500
         
@@ -35,15 +37,19 @@ public class BallDemo
         // crate and show the balls
        
             Random aleatorio = new Random();
+        for(int i = 0; i < numeroPelotas; i++){    
             int radio = 1 + (int)(Math.random()*(100-20+1));
+            int y = aleatorio.nextInt(350);
             int x = aleatorio.nextInt(300);
-            int color = aleatorio.nextInt(256);
-            Color pintado = new Color(color);
-            BouncingBall ball = new BouncingBall(x, 50, radio, pintado, ground, myCanvas);//x, y, r, color, ground, canvas
+            int colorRed = aleatorio.nextInt(256);
+            int colorGreen = aleatorio.nextInt(256);
+            int colorBlue = aleatorio.nextInt(256);
+            Color pintado = new Color(colorRed, colorGreen, colorBlue);
+            
+            BouncingBall ball = new BouncingBall(x, y, radio, pintado, ground, myCanvas);//x, y, r, color, ground, canvas
             ball.draw();
-            BouncingBall ball2 = new BouncingBall(7, 80, 20, Color.RED, ground, myCanvas);
-            ball2.draw();
-     
+            arrayPelotas.add(ball);
+        }
 
         // make them bounce
         boolean finished =  false;

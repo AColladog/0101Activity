@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class BallDemo   
 {
     private Canvas myCanvas;
-    ArrayList<BouncingBall> arrayPelotas = new ArrayList<>();
+    ArrayList<BouncingBall> arrayPelotas;
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -20,6 +20,7 @@ public class BallDemo
     public BallDemo()
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
+        arrayPelotas = new ArrayList<>();
     }
 
     /**
@@ -55,11 +56,14 @@ public class BallDemo
         boolean finished =  false;
         while(!finished) {
             myCanvas.wait(50);           // small delay
-            ball.move();
-            ball2.move();
+            for(BouncingBall pelota : arrayPelotas){
+                pelota.move();
+            }
             // stop once ball has travelled a certain distance on x axis
-            if(ball.getXPosition() >= 550 || ball2.getXPosition() >= 550) {
-                finished = true;
+            for(BouncingBall moveBall : arrayPelotas){
+                if(moveBall.getXPosition() >= 550) {
+                    finished = true;
+                }
             }
         }
     }

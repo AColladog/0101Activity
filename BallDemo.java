@@ -79,5 +79,7 @@ public class BallDemo
         myCanvas.drawLine(550, 450, 550, 40);
         myCanvas.setVisible(true);
         
+        
+        
     }
 }

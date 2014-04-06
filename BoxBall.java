@@ -13,8 +13,8 @@ public class BoxBall
     private final int groundPositionX2;      // y top position of ground
     private final int groundPositionY2;      // x left position of ground
     private Canvas canvas;
-    private int ySpeed = 1;                
-    private int xSpeed = 1;
+    private int ySpeed = 3;                
+    private int xSpeed = 3;
 
     /**
      * Constructor for objects of class BouncingBall
@@ -60,31 +60,33 @@ public class BoxBall
     public void move()
     {
         // remove from canvas at the current position
-        erase();
+      erase();
         
         yPosition += ySpeed;
         xPosition += xSpeed;
         
-        if(yPosition >= (groundPositionX1 - diameter)){
-            yPosition = (int)(groundPositionX1 - diameter);
+        if(yPosition >= (groundPositionY1 - diameter)){     //450
+            yPosition = (int)(groundPositionY1 - diameter);
             ySpeed = -ySpeed;
         }
-        if(yPosition >= (groundPositionX2 + diameter)){
-            yPosition = (int)(groundPositionX2 + diameter);
+        
+        if(yPosition <= groundPositionY2){         //40
+            yPosition = (int)(groundPositionY2);
             ySpeed = -ySpeed;
-        }
-        if(xPosition >= (groundPositionY1 + diameter)){
-            xPosition = (int)(groundPositionY1 + diameter);
+        }     
+      
+        if(xPosition <= groundPositionX2){         //50
+            xPosition = (int)(groundPositionX2);
             xSpeed = -xSpeed;
         }
+      
         // check if it has hit the ground
-        if(xPosition >= (groundPositionY2 - diameter)) {
-            yPosition = (int)(groundPositionY2 - diameter);
+        if(xPosition >= (groundPositionX1 - diameter)) {        //550
+            xPosition = (int)(groundPositionX1 - diameter);
             xSpeed = -xSpeed; 
         }
 
         // draw again at new position
         draw();
-    }
-
+    }    
 }

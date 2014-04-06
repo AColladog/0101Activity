@@ -12,6 +12,10 @@ import java.util.ArrayList;
 public class BallDemo   
 {
     private Canvas myCanvas;
+    private static final int GROUND_X1 = 50;
+    private static final int GROUND_X2 = 550;
+    private static final int GROUND_Y1 = 40;
+    private static final int GROUND_Y2 = 450;
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -72,14 +76,39 @@ public class BallDemo
      * @param numeroPelotas, es el número de pelotas que se crearán
      */
     public void boxBounce(int numeroPelotas){
+        ArrayList<BoxBall> arrayPelotas = new ArrayList<>();
+        
         //creo rectangulo
-        myCanvas.drawLine(50, 40, 550, 40);
-        myCanvas.drawLine(50, 450, 550, 450);
-        myCanvas.drawLine(50, 450, 50, 40);
-        myCanvas.drawLine(550, 450, 550, 40);
         myCanvas.setVisible(true);
-        
-        
+        myCanvas.drawLine(GROUND_X1, GROUND_Y2, GROUND_X2, GROUND_Y2);
+        myCanvas.drawLine(GROUND_X1, GROUND_Y1, GROUND_X2, GROUND_Y1);
+        myCanvas.drawLine(GROUND_X1, GROUND_Y1, GROUND_X1, GROUND_Y2);
+        myCanvas.drawLine(GROUND_X2, GROUND_Y1, GROUND_X2, GROUND_Y2);
+        // crate and show the balls
+       
+        Random aleatorio = new Random();
+        for(int i = 0; i < numeroPelotas; i++){    
+            int radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20
+            int y = aleatorio.nextInt(350);
+            int x = aleatorio.nextInt(300);
+            int colorRed = aleatorio.nextInt(256);
+            int colorGreen = aleatorio.nextInt(256);
+            int colorBlue = aleatorio.nextInt(256);
+            Color pintado = new Color(colorRed, colorGreen, colorBlue);
+            
+            BoxBall ball = new BoxBall(x, y, radio, pintado, GROUND_X2, GROUND_Y2, GROUND_X1, GROUND_Y1, myCanvas);//x, y, r, color, ground, canvas
+            ball.draw();
+            arrayPelotas.add(ball);
+        }
+
+        // make them bounce
+        boolean finished =  false;
+        while(!finished) {
+            myCanvas.wait(50);           // small delay
+            for(BoxBall pelota : arrayPelotas){
+                pelota.move();
+            }     
+        }
         
     }
 }

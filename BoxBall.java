@@ -57,6 +57,34 @@ public class BoxBall
         canvas.eraseCircle(xPosition, yPosition, diameter);
     }
 
-    
+    public void move()
+    {
+        // remove from canvas at the current position
+        erase();
+        
+        yPosition += ySpeed;
+        xPosition += xSpeed;
+        
+        if(yPosition >= (groundPositionX1 - diameter)){
+            yPosition = (int)(groundPositionX1 - diameter);
+            ySpeed = -ySpeed;
+        }
+        if(yPosition >= (groundPositionX2 + diameter)){
+            yPosition = (int)(groundPositionX2 + diameter);
+            ySpeed = -ySpeed;
+        }
+        if(xPosition >= (groundPositionY1 + diameter)){
+            xPosition = (int)(groundPositionY1 + diameter);
+            xSpeed = -xSpeed;
+        }
+        // check if it has hit the ground
+        if(xPosition >= (groundPositionY2 - diameter)) {
+            yPosition = (int)(groundPositionY2 - diameter);
+            xSpeed = -xSpeed; 
+        }
+
+        // draw again at new position
+        draw();
+    }
 
 }

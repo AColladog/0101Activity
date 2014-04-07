@@ -41,10 +41,11 @@ public class BallDemo
         // crate and show the balls
        
             Random aleatorio = new Random();
-        for(int i = 0; i < numeroPelotas; i++){    
-            int radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20
-            int y = aleatorio.nextInt(300) + (40 + radio);
-            int x = aleatorio.nextInt(300) + (50 + radio);
+        for(int i = 0; i < numeroPelotas; i++){ 
+            boolean impar = true;
+            int radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20                
+            int y = aleatorio.nextInt(300);
+            int x = aleatorio.nextInt(300);
             int colorRed = aleatorio.nextInt(256);
             int colorGreen = aleatorio.nextInt(256);
             int colorBlue = aleatorio.nextInt(256);
@@ -86,10 +87,17 @@ public class BallDemo
         // crate and show the balls
        
         Random aleatorio = new Random();
-        for(int i = 0; i < numeroPelotas; i++){    
-            int radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20
-            int y = aleatorio.nextInt(350);
-            int x = aleatorio.nextInt(300);
+        for(int i = 0; i < numeroPelotas; i++){ 
+            boolean par = true;
+            int radio = 0;
+            while(par){
+                radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20
+                if(radio%2 != 0){
+                    par = false;
+                }
+            }
+            int y = aleatorio.nextInt(300) + (40 + radio);
+            int x = aleatorio.nextInt(300) + (50 + radio);
             int colorRed = aleatorio.nextInt(256);
             int colorGreen = aleatorio.nextInt(256);
             int colorBlue = aleatorio.nextInt(256);

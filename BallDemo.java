@@ -43,8 +43,8 @@ public class BallDemo
             Random aleatorio = new Random();
         for(int i = 0; i < numeroPelotas; i++){    
             int radio = 1 + (int)(Math.random()*(100-20+1)); // aleatorio.nextInt(80) + 20
-            int y = aleatorio.nextInt(350);
-            int x = aleatorio.nextInt(300);
+            int y = aleatorio.nextInt(300) + (40 + radio);
+            int x = aleatorio.nextInt(300) + (50 + radio);
             int colorRed = aleatorio.nextInt(256);
             int colorGreen = aleatorio.nextInt(256);
             int colorBlue = aleatorio.nextInt(256);

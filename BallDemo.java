@@ -77,7 +77,6 @@ public class BallDemo
      */
     public void boxBounce(int numeroPelotas){
         ArrayList<BoxBall> arrayPelotas = new ArrayList<>();
-        
         //creo rectangulo
         myCanvas.setVisible(true);
         myCanvas.drawLine(GROUND_X1, GROUND_Y2, GROUND_X2, GROUND_Y2);

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.Random;
 public class BoxBall
 {
 
@@ -38,8 +39,18 @@ public class BoxBall
         groundPositionX2 = groundPos3;
         groundPositionY2 = groundPos4;
         canvas = drawingCanvas;   
+        
+        Random aleatorio = new Random();
+        int y = aleatorio.nextInt(2);
+        if(y == 0){
+            ySpeed = -ySpeed;
+        }
+        int x = aleatorio.nextInt(2);
+        if(x == 0){
+            xSpeed = -xSpeed;
+        }
     }
-    
+
     /**
      * Draw this ball at its current position onto the canvas.
      **/
@@ -60,26 +71,27 @@ public class BoxBall
     public void move()
     {
         // remove from canvas at the current position
-      erase();
+        erase();
         
+
         yPosition += ySpeed;
         xPosition += xSpeed;
-        
+
         if(yPosition >= (groundPositionY1 - diameter)){     //450
             yPosition = (int)(groundPositionY1 - diameter);
             ySpeed = -ySpeed;
         }
-        
+
         if(yPosition <= groundPositionY2){         //40
             yPosition = (int)(groundPositionY2);
             ySpeed = -ySpeed;
         }     
-      
+
         if(xPosition <= groundPositionX2){         //50
             xPosition = (int)(groundPositionX2);
             xSpeed = -xSpeed;
         }
-      
+
         // check if it has hit the ground
         if(xPosition >= (groundPositionX1 - diameter)) {        //550
             xPosition = (int)(groundPositionX1 - diameter);
